@@ -33,10 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test code
-        id: run-test
+        id: run-tests
         run: npm run test
       - name: Upload test report
-        if: ${{ steps.run-test.outcome == 'failure' }}
+        if: steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
